@@ -7,11 +7,10 @@ URL: htp://2020creative.com
 define( 'TEMPPATH', get_stylesheet_directory_uri());
 define( 'IMAGES', TEMPPATH. "/imgages");
 
-// Options framework
-// require_once ('plugins/options-framework/options-framework.php');
-
-// Custom fields
+// Plugins
 require_once ('plugins/advanced-custom-fields/acf.php');
+require_once ('plugins/acf-options-page/acf-options-page.php');
+require_once ('plugins/github-updater/github-updater.php');
 
 // Shortcodes
 require_once ('tt-shortcodes.php');
@@ -34,23 +33,19 @@ add_filter('admin_footer_text', 'tt_custom_admin_footer');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Menus
 
 register_nav_menus( array(
-	'section_links_1' => 'Section Links 1',
-	'section_links_2' => 'Section Links 2',
-	'section_links_3' => 'Section Links 3',
-	'section_links_4' => 'Section Links 4',
-    'social_media' => 'Social Media',
+	'tt_main' => 'TT Main',
+	
 ) );
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Sidebars
 
 ////////////////////////////////////////////////////////
 
 $args = array(
-	'name'          => __( 'Section - Gem Products - Home', 'theme_text_domain' ),
-	'id'            => 'section-gem-product',
+	'name'          => __( 'TT Sidebar', 'theme_text_domain' ),
+	'id'            => 'tt_sidebar',
 	'description'   => '',
-        'class'         => '',
+    'class'         => '',
 	'before_widget' => '<li id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</li>',
 	'before_title'  => '<h2 class="widgettitle">',
