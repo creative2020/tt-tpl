@@ -18,6 +18,23 @@ require_once ('tt-shortcodes.php');
 // CPT's
 // require_once ('tt-cpt.php');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// CSS Enqueue Styles
+
+if( !function_exists("tt_theme_styles") ) {  
+    function tt_theme_styles() { 
+        // parent theme
+        // wp_register_style( 'tt-main', get_template_directory_uri() . '/css/tt-main.css', array(), '1.0', 'all' );
+        // wp_enqueue_style( 'tt-main' );
+
+        // child themes
+        // wp_register_style( 'tt-child', get_stylesheet_directory_uri() . '/tt-child.css', array(), '1.0', 'all' );
+        // wp_enqueue_style( 'tt-child' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'tt_theme_styles' );
+
+////////////////////////////////////////////////////////
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// TT Admin
 
 // Custom Backend Footer
