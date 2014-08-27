@@ -18,6 +18,9 @@ require_once ('tt-shortcodes.php');
 // CPT's
 // require_once ('tt-cpt.php');
 
+// Custom fields
+// require_once ('tt-acf-fields.php');
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Add boostrap from CDN
 
 if( !function_exists("tt_bootstrap_cdn") ) {  
