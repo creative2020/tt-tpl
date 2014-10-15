@@ -10,7 +10,7 @@ define( 'IMAGES', TEMPPATH. "/imgages");
 // Plugins
 require_once ('plugins/advanced-custom-fields/acf.php');
 require_once ('plugins/acf-options-page/acf-options-page.php');
-require_once ('plugins/github-updater/github-updater.php');
+require_once ('plugins/github-updater-2.8.1/github-updater.php'); //version 2.8.1 added 2014-10-15
 
 // Shortcodes
 require_once ('tt-shortcodes.php');
