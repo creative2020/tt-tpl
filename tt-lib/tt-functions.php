@@ -22,6 +22,9 @@ require_once ('tt-shortcodes.php');
 // Custom fields
 // require_once ('tt-acf-fields.php');
 
+// Add theme support for featured images
+add_theme_support( 'post-thumbnails' );
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Add boostrap from CDN
 
 if( !function_exists("tt_bootstrap_cdn") ) {  
