@@ -8,9 +8,6 @@ define( 'TEMPPATH', get_stylesheet_directory_uri());
 define( 'IMAGES', TEMPPATH. "/imgages");
 
 // Plugins
-require_once ('plugins/advanced-custom-fields/acf.php');
-require_once ('plugins/acf-options-page/acf-options-page.php');
-require_once ('plugins/github-updater-2.8.1/github-updater.php'); //version 2.8.1 added 2014-10-15
 require_once ('plugins/wp_bootstrap_navwalker.php'); // used for bootstrap nav menus
 
 // Shortcodes
@@ -22,11 +19,14 @@ require_once ('tt-customizer.php');
 // CPT's
 // require_once ('tt-cpt.php');
 
-// Custom fields
-// require_once ('tt-acf-fields.php');
-
 // Add theme support for featured images
 add_theme_support( 'post-thumbnails' );
+
+// Add feature image sizes
+// add_image_size( square, 400, 400, true );
+
+// Add theme support for shortcodes inside widgets
+add_filter( 'widget_text', 'do_shortcode');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Add boostrap from CDN
 
