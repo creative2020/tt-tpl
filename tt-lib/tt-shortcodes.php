@@ -155,3 +155,48 @@ return $output;
 }
 
 ////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////// html variable conundrum
+
+add_shortcode( 'tt_hvc', 'tt_hvc' );
+function tt_hvc ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'normal',
+            'id' => '0',
+		), $atts )
+	);
+    
+    if ( $name == 'normal' ) {
+        $normal_title = 'My Normal Title';
+        $output .= '<h1>Normal: '.$normal_title.'</h1>';
+    }
+    if ( $name == 'test_method_1' ) {
+        //contents of file 'content-method-1.php' with vars
+        // get_template_part('content', 'method-1');
+        // I can call this in a regular template page which is built in Wordpress function
+        $id = '8'; //var does not carry through
+        get_template_part('content', 'method-1');
+    }
+    if ( $name == 'test_method_2' ) {
+        //contents of file 'content-method-1.php' with vars
+        //$output .= <<<EOD
+            //include_once(get_template_directory().'/content-method-1.php');
+            //EOD;
+        //$output .= ''; //?
+    }
+    if ( $name == 'test_method_3' ) { // I think I just figured this fucker out
+        // http://stackoverflow.com/questions/11230280/how-to-assign-the-contents-of-a-file-to-a-variable-in-php
+        $id = '8'; //var DOES carry through!!
+        ob_start();                                                     // start capturing output
+            include(get_template_directory().'/content-method-1.php');      // execute the file
+            $output = ob_get_contents();                                   // get the contents from the buffer
+        ob_end_clean(); 
+    }
+// code
+return $output;    
+}
+
+////////////////////////////////////////////////////////

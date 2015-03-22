@@ -24,8 +24,8 @@
                 <div class="in pull-right"><a href="#" title="Linked In" target="_blank"></a></div>
                 <div class="twitter pull-right"><a href="#" title="Twitter" target="_blank"></a></div>
             </div>
-            <div class="phone col-xs-12 hidden-xs"><i class="fa fa-phone"></i> 123-456-7890</div>
-            <h2 class="phone-m col-xs-12 visible-xs-block text-center"><i class="fa fa-phone"></i> 123-456-7890</h2>
+            <div class="phone col-xs-12 hidden-xs"><i class="fa fa-phone"></i> <?php echo get_theme_mod( 'header_phone' ); ?></div>
+            <h2 class="phone-m col-xs-12 visible-xs-block text-center"><i class="fa fa-phone"></i> <?php echo get_theme_mod( 'header_phone' ); ?></h2>
         </div>
     </div>
 </div>         

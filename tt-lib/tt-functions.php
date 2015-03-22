@@ -16,6 +16,9 @@ require_once ('plugins/wp_bootstrap_navwalker.php'); // used for bootstrap nav m
 // Shortcodes
 require_once ('tt-shortcodes.php');
 
+// Shortcodes
+require_once ('tt-customizer.php');
+
 // CPT's
 // require_once ('tt-cpt.php');
 
