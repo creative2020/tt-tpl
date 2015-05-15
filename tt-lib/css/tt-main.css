@@ -367,33 +367,44 @@ a.side-icon {
     color:#9fcf67;
 }
 
+/* xl ------------------------START------------------- */
+
+@media only screen 
+and (min-width : 1501px) {
+	
+	
+} /* @media -------------END-----------------*/ 
+
+/* lg ------------------------START------------------- */
+
+@media only screen 
+and (max-width : 1500px) and (min-width : 993px) {
+
+	
+} /* @media -------------END-----------------*/ 
+
+/* med ------------------------START------------------- */
+
+@media only screen 
+and (max-width : 1200px) and (min-width : 993px) {
 
 
 
+} /* @media -------------END-----------------*/ 
+
+/* small ------------------------START------------------- */
+
+@media only screen 
+and (max-width : 992px) and (min-width : 769px) {
+
+
+
+} /* @media -------------END-----------------*/    
+    
 /* mobile ------------------------START------------------- */
 
 @media only screen 
 and (max-width : 768px) {
     
-#social .pull-right {
-}
-#social {
-    width:100%;
-    padding:0 auto;
-    text-align:center;
-}    
-#slider-wrap {
-        display:none;
-    }
-.quicklink {
-    height:auto;
-    padding: 1.0em;
-    overflow:visible;
-    background-color: #79a89b;
-    border-bottom:1px solid #79a89b;
-}
-.now, .go, .quicklink:hover .go {
-    display:none;
-}
 
 } /* @media -------------END-----------------*/
