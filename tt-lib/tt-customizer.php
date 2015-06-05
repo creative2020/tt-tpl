@@ -12,11 +12,27 @@ function tt_theme_options( $wp_customize ) {
     ///////////////////////
     $theme = 'tt_theme';
     $capability = 'edit_theme_options';
+        
     $tt_customizer = array(
         // name, priority, capability, description
-        array( 'Header Settings', 100, $capability, 'Change header options', ),
-        array( 'Color Settings', 90, $capability, 'Change color options', ),
-        array( 'Footer Settings', 80, $capability, 'Change color options', ),
+        'header'	=>	array( 
+        				'name'	=>	'Header Settings', 
+        				'priority'	=>	50,
+        				'capability'	=>	$capability, 
+        				'desc'	=>	'Change header options',
+        				),
+        'colors'	=>	array( 
+        				'name'	=>	'Color Settings', 
+        				'priority'	=>	70,
+        				'capability'	=>	$capability, 
+        				'desc'	=>	'Change color options',
+        				),
+        'footer'	=>	array( 
+        				'name'	=>	'Footer Settings', 
+        				'priority'	=>	100,
+        				'capability'	=>	$capability, 
+        				'desc'	=>	'Change footer options',
+        				),
         );
 
     ///////////////////////
@@ -24,10 +40,10 @@ function tt_theme_options( $wp_customize ) {
     ///////////////////////
     $wp_customize->add_section( 'tt_theme_header_options',
         array(
-            'title'       => __( $tt_customizer[0][0], $theme ),
-            'priority'    => $tt_customizer[0][1],
-            'capability'  => $tt_customizer[0][2],
-            'description' => __($tt_customizer[0][3], $theme), 
+            'title'       => __( $tt_customizer['header']['name'], $theme ),
+            'priority'    => $tt_customizer['header']['priority'],
+            'capability'  => $tt_customizer['header']['capability'],
+            'description' => __($tt_customizer['header']['desc'], $theme), 
         ) 
     );
             ///////////////////////
@@ -36,7 +52,7 @@ function tt_theme_options( $wp_customize ) {
 
                 $wp_customize->add_setting( 'header_bg_color',
                     array(
-                        'default' => '#000000'
+                        'default' => '#ffffff'
                     ));
                     // setting -> control
                     $wp_customize->add_control( new WP_Customize_Color_Control( 
@@ -73,10 +89,10 @@ function tt_theme_options( $wp_customize ) {
     ///////////////////////
     $wp_customize->add_section( 'tt_theme_color_options',
         array(
-            'title'       => __( $tt_customizer[1][0], $theme ),
-            'priority'    => $tt_customizer[1][1],
-            'capability'  => $tt_customizer[1][2],
-            'description' => __($tt_customizer[1][3], $theme), 
+            'title'       => __( $tt_customizer['colors']['name'], $theme ),
+            'priority'    => $tt_customizer['colors']['priority'],
+            'capability'  => $tt_customizer['colors']['capability'],
+            'description' => __($tt_customizer['colors']['desc'], $theme), 
         ) 
     );
             ///////////////////////
@@ -85,7 +101,7 @@ function tt_theme_options( $wp_customize ) {
 
                 $wp_customize->add_setting( 'body_bg_color',
                     array(
-                        'default' => '#000000'
+                        'default' => 'white'
                     ));
                     // setting -> control
                     $wp_customize->add_control( new WP_Customize_Color_Control( 
@@ -98,10 +114,43 @@ function tt_theme_options( $wp_customize ) {
                             'priority' => 10,
                         )));
 
+	///////////////////////
+    // add section
+    ///////////////////////
+    $tt_customizer_section_name = 'tt_theme_footer_options';
+    
+    $wp_customize->add_section( $tt_customizer_section_name,
+        array(
+            'title'       => __( $tt_customizer['footer']['name'], $theme ),
+            'priority'    => $tt_customizer['footer']['priority'],
+            'capability'  => $tt_customizer['footer']['capability'],
+            'description' => __($tt_customizer['footer']['desc'], $theme), 
+        ) 
+    );
             ///////////////////////
             // add setting
             ///////////////////////
-                $wp_customize->add_setting( 'color_name',
+				$setting_name = 'footer_bg_color';
+                $wp_customize->add_setting( $setting_name,
+                    array(
+                        'default' => 'blue'
+                    ));
+                    // setting -> control
+                    $wp_customize->add_control( new WP_Customize_Color_Control( 
+                        $wp_customize, 
+                        'body_bg_color_control',
+                        array(
+                            'label'    => __( 'Footer Background Color', $theme ), 
+                            'section'  => $tt_customizer_section_name,
+                            'settings' => $setting_name,
+                            'priority' => 10,
+                        )));
+
+            ///////////////////////
+            // add setting
+            ///////////////////////
+            	$setting_name = 'footer_color_name';
+                $wp_customize->add_setting( $setting_name,
                     array(
                         'default' => 'blue'
                     ));  
@@ -111,8 +160,8 @@ function tt_theme_options( $wp_customize ) {
                         'color_name',
                         array(
                             'label'          => __( 'Color Name', $theme ),
-                            'section'        => 'tt_theme_color_options',
-                            'settings'       => 'color_name',
+                            'section'        => $tt_customizer_section_name,
+                            'settings'       => $setting_name,
                             'type'           => 'text',
 
                         )));
