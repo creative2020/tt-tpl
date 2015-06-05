@@ -6,7 +6,7 @@ add_action( 'customize_register' , 'tt_theme_options' );
 
 function tt_theme_options( $wp_customize ) {
 	// Sections, settings and controls will be added here
-}
+
     ///////////////////////
     // define sections
     ///////////////////////
@@ -121,6 +121,8 @@ function tt_theme_options( $wp_customize ) {
 ///////////////////////
 // dynamic       css //
 ///////////////////////
+
+}
 
 add_action( 'wp_head' , 'tt_dynamic_css' );
 
